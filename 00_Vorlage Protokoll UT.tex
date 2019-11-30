@@ -1,0 +1,151 @@
+%Dokumentklasse
+
+%draft als optionohne bilder für bessere performance
+%\documentclass[a4paper,12pt,draft]{scrreprt}
+
+%normal mit Bildern
+\documentclass[a4paper,12pt]{scrreprt}
+
+\usepackage[left= 3cm,right = 3cm, bottom = 3cm,top = 3cm]{geometry}
+%\usepackage[onehalfspacing]{setspace}
+
+% ============= Packages =============
+
+% Dokumentinformationen
+\usepackage[
+	pdftitle={Praktikum - Umwelttechnik},
+	pdfsubject={},
+	pdfauthor={Roman-Luca Zank},
+	pdfkeywords={},	
+	%Links nicht einrahmen
+	hidelinks
+]{hyperref}
+
+%nur Text zum prüfen des Umfangs
+
+% Standard Packages
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault} 
+
+\usepackage{graphicx}
+\graphicspath{{img/}}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{placeins}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage[list=true]{subcaption}
+
+%Einheitenpackage
+\usepackage{siunitx}  
+\sisetup{	locale = DE, 
+			per-mode=fraction,
+			inter-unit-product=\ensuremath{\cdot},
+			detect-weight = true,
+			quotient-mode=fraction
+		}
+%neue Einheiten definieren
+\DeclareSIUnit\xyz{xyz}		
+
+%Automatisch cdot statt *
+\DeclareMathSymbol{*}{\mathbin}{symbols}{"01}
+
+
+
+%\setcounter{lofdepth}{2}      %für subfigures in list of figures
+
+%Tabelle
+\usepackage{tabularx}
+\usepackage{tabulary}
+
+%%Verzeichnispackages
+%\usepackage{natbib}
+
+%\usepackage{hyperref}
+%\newcites{
+
+% zusätzliche Schriftzeichen der American Mathematical Society
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+%Abkürzungsverzeichnis
+\usepackage{acronym}
+
+%kein Abstand bei neuem Kapitel vom Seitenanfang
+%\vspace*{2.3\baselineskip} = ORIGINAL
+\renewcommand*{\chapterheadstartvskip}{\vspace*{.0\baselineskip}}
+
+%nicht einrücken nach Absatz
+\setlength{\parindent}{0pt}
+
+% ============= Kopf- und Fußzeile =============
+\pagestyle{fancy}
+%
+\lhead{}
+\chead{}
+\rhead{}%\slshape }%\leftmark}
+%%
+\lfoot{}
+\cfoot{}
+\rfoot{\pagemark}
+%%
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\chapterpagestyle}{fancy}
+
+% ============= Package Einstellungen & Sonstiges ============= 
+%Besondere Trennungen
+%\hyphenation{De-zi-mal-tren-nung}
+\usepackage[none]{hyphenat}
+\hyphenpenalty=5000
+\tolerance=5000
+\providecommand\phantomsection{}
+
+\usepackage{mathtools}
+
+% ============= Dokumentbeginn =============
+
+\begin{document}
+%Seiten ohne Kopf- und Fußzeile sowie Seitenzahl
+\pagestyle{empty}
+
+%\include{01_titel}
+
+%\include{14_danksagungen}
+
+%\include{15_zusammenfassung}
+
+% Beendet eine Seite und erzwingt auf den nachfolgenden Seiten die Ausgabe aller Gleitobjekte (z.B. Abbildungen), die bislang definiert, aber noch nicht ausgegeben wurden. Dieser Befehl fügt, falls nötig, eine leere Seite ein, sodaß die nächste Seite nach den Gleitobjekten eine ungerade Seitennummer hat. 
+\cleardoubleoddpage
+
+% Pagestyle für Titelblatt leer
+\pagestyle{empty}
+
+%Seite zählen ab
+\setcounter{page}{0}
+
+%Titelblatt
+%\include{01_titel} %Prokolle
+\include{01_titel2} %Seminar-/Abschlussarbeit
+
+% Pagestyle für Rest des Dokuments
+\pagestyle{fancy}
+
+%Inhaltsverzeichnis
+\tableofcontents
+
+%Inhalt
+\include{02_verzeichnisse}
+
+\include{03_zerkleinern}
+
+\include{04_trennen}
+
+\include{08_literatur}
+
+\end{document}
